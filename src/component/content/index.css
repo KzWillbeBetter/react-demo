@@ -9,6 +9,12 @@
 .active {
     background-color: #079ACD;
 }
+.show{
+    display: block;
+}
+.none{
+    display: none;
+}
 .todo-empty {
     height: 40px;
     line-height: 40px;

@@ -14,6 +14,7 @@ export default class index extends Component {
         if (event.target.value === '')
             return;
         const data = {id: uuidv4(), name: event.target.value, done: false}
+        event.target.value = ''
         this.props.getTodo(data)
     }
 
