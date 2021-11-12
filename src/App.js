@@ -1,19 +1,24 @@
+import React, {Component} from 'react';
 import './App.css';
 import Head from './component/head'
 import Content from './component/content'
 import Footer from './component/footer'
 
-
-import React, {Component} from 'react';
-
 class App extends Component {
     state = {
-        todos: [
-            {id:1,name:'吃饭',done:false},
-            {id:2,name:'打球',done:true},
-            {id:3,name:'学习',done:false},
-
-        ]
+        todoList:
+            [
+                {id: 1, name: '吃饭', done: true},
+                {id: 2, name: '刷牙', done: false},
+                {id: 3, name: '洗澡', done: false}
+            ]
+    }
+    getTodo = (data) => {
+        const todos = this.state.todoList
+        const newTodos=[data,...todos]
+        // todos.push(data)
+        console.log(newTodos)
+        this.setState({todoList: newTodos})
     }
 
     render() {
@@ -21,8 +26,8 @@ class App extends Component {
             <div className="App">
                 <div className="todo-container">
                     <div className="todo-wrap">
-                        <Head/>
-                        <Content todos={this.state.todos}/>
+                        <Head getTodo={this.getTodo}/>
+                        <Content todos={this.state.todoList}/>
                         <Footer/>
                     </div>
                 </div>
@@ -30,6 +35,5 @@ class App extends Component {
         );
     }
 }
-
 
 export default App;

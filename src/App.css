@@ -1,4 +1,6 @@
-/*base*/
+.App {
+  text-align: center;
+}
 body {
   background: #fff;
 }

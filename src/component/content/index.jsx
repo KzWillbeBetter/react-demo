@@ -2,29 +2,34 @@ import React, {Component} from 'react';
 import './index.css'
 
 export default class index extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
+    state = {
+        show: false,
+        index:0
     }
+    handle = (isShow,index) => {
+        return () => {
+            console.log(isShow,index)
+            this.setState({show: isShow,index:index})
+        }
+    }
+
     render() {
-        const todos=this.props.todos
+        const todos = this.props.todos
         return (
             <ul className="todo-main">
                 {
-                    todos.map(item=>{
+                    todos.map((todo,index) => {
                         return (
-                            <li key={item.id}>
+                            <li style={{backgroundColor:this.state.show?'grey':'white'}} onMouseEnter={this.handle(true,index)} onMouseLeave={this.handle(false,index)} key={todo.id}>
                                 <label>
-                                    <input type="checkbox" defaultChecked={item.done}/>
-                                    <span>{item.name}</span>
+                                    <input type="checkbox" defaultChecked={todo.done}/>
+                                    <span>{todo.name}</span>
                                 </label>
-                                <button className="btn btn-danger" style={{display:"none"}}>删除</button>
+                                <button className="btn btn-danger" style={{display: 'none'}}>删除</button>
                             </li>
                         )
                     })
-
                 }
-
             </ul>
         )
     }
