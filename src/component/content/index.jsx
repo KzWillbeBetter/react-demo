@@ -3,13 +3,11 @@ import './index.css'
 
 export default class index extends Component {
     state = {
-        show: false,
-        index:0
+        currentIndex:-1
     }
-    handle = (isShow,index) => {
+    handle = (index) => {
         return () => {
-            console.log(isShow,index)
-            this.setState({show: isShow,index:index})
+            this.setState({currentIndex:index})
         }
     }
 
@@ -20,7 +18,7 @@ export default class index extends Component {
                 {
                     todos.map((todo,index) => {
                         return (
-                            <li style={{backgroundColor:this.state.show?'grey':'white'}} onMouseEnter={this.handle(true,index)} onMouseLeave={this.handle(false,index)} key={todo.id}>
+                            <li    className={this.state.currentIndex === index ? 'active' : ''} onMouseEnter={this.handle(index)} onMouseLeave={this.handle(-1)} key={todo.id}>
                                 <label>
                                     <input type="checkbox" defaultChecked={todo.done}/>
                                     <span>{todo.name}</span>

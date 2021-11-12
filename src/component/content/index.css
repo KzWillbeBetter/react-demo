@@ -6,6 +6,9 @@
     padding: 0px;
 }
 
+.active {
+    background-color: #079ACD;
+}
 .todo-empty {
     height: 40px;
     line-height: 40px;
