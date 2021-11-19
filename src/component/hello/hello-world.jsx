@@ -3,7 +3,7 @@ import './hello.css'
 import axios from "axios";
 export default class HelloWorld extends Component {
     http = () =>{
-        axios.get('/api1/students').then(res => {
+        axios.get('/api/students').then(res => {
             console.log('成功', res.data )
         }, err => {
             console.log('失败', err)
