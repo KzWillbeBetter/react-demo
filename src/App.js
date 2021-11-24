@@ -5,20 +5,22 @@ import List from './component/demo2/list/index'
 
 class App extends Component {
     state = {
-        users:[]
+        users:[],
+        isFirst:true,
+        isLoading:false,
+        err:''
     }
 
-    getUser = (data) => {
-        this.setState({users:data})
-        console.log(this.state.users)
+    updateState = (stateObj) => {
+        this.setState(stateObj)
     }
 
     render() {
         return (
             <div className="App">
                 <div className="container">
-                    <Search getUser={this.getUser}/>
-                    <List users={this.state.users}/>
+                    <Search updateState={this.updateState}/>
+                    <List {...this.state}/>
                 </div>
             </div>
         );

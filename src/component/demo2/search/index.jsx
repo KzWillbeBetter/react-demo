@@ -4,17 +4,17 @@ import axios from "axios";
 
 export default class index extends Component {
 
-    state={users:[]}
     search = () => {
         const {value} = this.inputValue
-        console.log(value)
+        this.props.updateState({isFirst: false,isLoading: true})
         axios.get('https://api.github.com/search/users?q=' + value, {}).then(
             res => {
-                this.setState({users:res.data.items})
-                this.props.getUser(this.state.users)
+                if(res){
+                    this.props.updateState({isFirst: false,isLoading: false,users: res.data.items})
+                }
             },
             error => {
-                console.log(error)
+                this.props.updateState({isLoading: false,err:error.toString()})
             }
         )
     }
