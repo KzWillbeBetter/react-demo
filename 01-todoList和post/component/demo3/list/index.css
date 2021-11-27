@@ -1,0 +1,25 @@
+.row {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #2e6da4;
+}
+
+.card {
+    box-sizing: border-box;
+    width: 33.333%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 1px solid #efefef;
+    text-align: center;
+}
+
+.card > img {
+    margin-bottom: .75rem;
+    border-radius: 100px;
+}
+
+.card-text {
+    font-size: 85%;
+}
