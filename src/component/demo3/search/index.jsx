@@ -5,20 +5,33 @@ import PubSub from 'pubsub-js'
 
 export default class index extends Component {
 
-    search = () => {
+    search = async () => {
         const {value} = this.inputValue
-        PubSub.publish('user',{users:[],isFirst: false,isLoading: true,err:''})
+        PubSub.publish('user', {users: [], isFirst: false, isLoading: true, err: ''})
+        try {
+            const response = await fetch('/api2/use21rs2?q=' + value)
+            const data = await response.json()
+            PubSub.publish('user', {isFirst: false, isLoading: false, users: data.items})
+        } catch (error) {
+            console.log('请求出错', error)
+            PubSub.publish('user', {isFirst: false, isLoading: false,users: [], err:error.message})
+        }
+
         // axios.get('/api/search/users2?q=' + value, {}).then(
-            axios.get('/api2/users2?q='+ value, {}).then(
-            res => {
-                if(res){
-                    PubSub.publish('user',{isFirst: false,isLoading: false,users: res.data.items})
-                }
-            },
-            error => {
-                PubSub.publish({isLoading: false,err:error.toString()})
-            }
-        )
+        // fetch('/api2/users2?q=' + value).then(
+        //     res => {
+        //         if (res) {
+        //             console.log('联系服务器成功了', res)
+        //             return res.json()
+        //         }
+        //     }
+        // ).then(
+        //     res => {
+        //         console.log('获取数据成功', res)
+        //     }
+        // ).catch((err)=>{
+        //     console.log('获取数据失败',err)
+        // })
     }
 
     render() {
