@@ -9,7 +9,7 @@ export default class index extends Component {
         const {value} = this.inputValue
         PubSub.publish('user', {users: [], isFirst: false, isLoading: true, err: ''})
         try {
-            const response = await fetch('/api2/use21rs2?q=' + value)
+            const response = await fetch('/api2/users2?q=' + value)
             const data = await response.json()
             PubSub.publish('user', {isFirst: false, isLoading: false, users: data.items})
         } catch (error) {
