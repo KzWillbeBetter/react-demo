@@ -1,3 +1,14 @@
-.container{
- text-align: center;
+.list-group-item.active > .badge,
+.nav-pills > .active > a > .badge {
+ color: #337ab7;
+ background-color: #fff;
+}
+.list-group-item > .badge {
+ float: right;
+}
+.list-group-item > .badge + .badge {
+ margin-right: 5px;
+}
+.active{
+ background-color: #2e6da4;
 }
