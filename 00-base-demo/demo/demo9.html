@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+
+    class Demo extends React.Component {
+        constructor(props) {
+            super(props);
+            console.log('constructor')
+        }
+        state = {opacity: 1}
+
+        death = () => {
+            //卸载组件
+            ReactDOM.unmountComponentAtNode(document.getElementById("app"))
+        }
+        mustUpdate=()=>{
+            this.forceUpdate()
+        }
+        action = () => {
+            this.timer= setInterval(() => {
+                let newOpacity = this.state.opacity
+                newOpacity -= 0.1
+                if (newOpacity <= 0) newOpacity = 1
+                this.setState({opacity: newOpacity})
+            }, 200)
+        }
+        //将挂载
+        UNSAFE_componentWillMount(){
+            console.log('componentWillMount')
+        }
+        //组件挂载完
+        componentDidMount(){
+            // this.action()
+            console.log('componentDidMount')
+        }
+        //组件确认更新
+        shouldComponentUpdate(){
+            console.log('shouldComponentUpdate')
+            return true
+        }
+        //组件将要更新
+        UNSAFE_componentWillUpdate() {
+            console.log('componentWillUpdate')
+        }
+        //组件更新完
+        componentDidUpdate(){
+            console.log('componentDidUpdate')
+        }
+        //将被卸载
+        UNSAFE_componentWillUnmount(){
+            clearInterval(this.timer)
+
+        }
+        render() {
+            console.log('render')
+            return (
+                <div>
+                    <h1 style={{opacity: this.state.opacity}}>不活了</h1>
+                    <button onClick={this.death}>点我结束</button>
+                    <button onClick={this.action}>点我开始</button>
+                    <button onClick={this.mustUpdate}>点我强制开始</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Demo/>, document.getElementById("app"))
+
+</script>
+</body>
+</html>

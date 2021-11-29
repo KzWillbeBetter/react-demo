@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+
+    class Demo extends React.Component {
+        show = () => {
+            console.log(this.refs.input1.value)
+        }
+        show2 = () => {
+            console.log(this.refs.input2.value)
+        }
+
+        render() {
+            return (
+                <div>
+                    <input ref='input1' type="text"/>
+                    <button onClick={this.show}>点我</button>
+                    <input ref='input2' onBlur={this.show2} type="text"/>
+
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Demo/>, document.getElementById("app"))
+
+</script>
+</body>
+</html>
