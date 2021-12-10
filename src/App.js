@@ -6,13 +6,12 @@ import MyNavLink from './components/MyNavLink/index'
 import './App.css';
 
 class App extends Component {
-
     render() {
         return (
             <div className="App">
                 <div className="container">
-                    <MyNavLink to='/about'>about</MyNavLink>
-                    <MyNavLink to='/home'>ho1me</MyNavLink>
+                    <MyNavLink to='/about' a={1}>about</MyNavLink>
+                    <MyNavLink to='/home'>home</MyNavLink>
                     <span>展示区</span>
                     <div>
                         <Route path='/about' component={About}/>
