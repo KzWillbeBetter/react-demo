@@ -25,13 +25,20 @@ export default class index extends Component {
                                     // params
                                     // <li key={item.id}><Link to={'/home/messages/detail/'+item.msg}>{item.msg}组件传值</Link></li>
                                     //search
-                                    <li key={item.id}><Link to={`/home/messages/detail/?msg=${item.msg}`}>{item.msg}组件传值</Link></li>
+                                    // <li key={item.id}><Link to={'/home/messages/detail/?msg='+item.msg}>{item.msg}组件传值</Link></li>
+                                    <li key={item.id}>
+                                        <Link to={{
+                                        pathname: '/home/messages/detail',
+                                        state: {msg: item.msg, id: item.id}}}>{item.msg}组件传值</Link>
+                                    </li>
                                 )
                             })
                         }
                     </ul>
                     <div className={'border'}>
                         {/*注册路由*/}
+                        {/*<Route path='/home/messages/detail/:msg' component={Detail}/>*/}
+                        {/*<Route path='/home/messages/detail' component={Detail}/>*/}
                         <Route path='/home/messages/detail' component={Detail}/>
                         <Redirect to={'/home/messages/detail'}/>
                     </div>
