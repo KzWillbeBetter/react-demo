@@ -10,8 +10,13 @@
  margin-right: 5px;
 }
 .active{
- background-color: #2e6da4;
+ color: #bd362f;
+ background-color: #b9c5d2;
 }
 .border{
+ height: 100px;
  border: 1px saddlebrown solid;
+}
+.flex{
+ display: flex;
 }
