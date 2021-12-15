@@ -1,22 +1,17 @@
 import React, {Component} from 'react';
-
+import {NavLink} from "react-router-dom";
 
 export default class index extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {};
     }
-
     render() {
         console.log(this.props)
-        const {msg} = this.props.match.params
         return (
             <div>
-                <ul>
-                    <li>{msg}</li>
-                </ul>
+                <NavLink {...this.props}/><br/>
             </div>
-
         )
     }
 }

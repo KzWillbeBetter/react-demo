@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Detail from './Detail/index'
-import {Link, Route} from "react-router-dom";
+import {Link, Redirect, Route} from "react-router-dom";
 
 export default class index extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ export default class index extends Component {
         //留痕迹
         this.props.history.push(`/home/messages/detail/${msg}/${id}`)
     }
-    // goForWord前进 goBack后退
+
     render() {
         return (
             <div>
@@ -46,7 +46,7 @@ export default class index extends Component {
                     <div className={'border'}>
                         {/*注册路由*/}
                         <Route path='/home/messages/detail/:id/:title' component={Detail}/>
-                        {/*<Redirect to={'/home/messages/detail'}/>*/}
+                        <Redirect to={'/home/messages/detail'}/>
                     </div>
                 </div>
             </div>

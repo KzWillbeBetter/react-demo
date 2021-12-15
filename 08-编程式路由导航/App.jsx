@@ -3,7 +3,6 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import About from './pages/About/index'
 import Home from './pages/Home/index'
 import MyNavLink from './components/MyNavLink/index'
-import Header from './components/Head/index'
 import './App.css';
 
 class App extends Component {
@@ -11,7 +10,6 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="container">
-                    <Header a={3}/>
                     <div className={'flex'}>
                         <MyNavLink to='/home'>Home</MyNavLink>
                         <MyNavLink to='/about' a={1}>About</MyNavLink>
