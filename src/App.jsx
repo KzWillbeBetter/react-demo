@@ -1,29 +1,24 @@
 import React, {Component} from 'react';
-import {Redirect, Route, Switch} from 'react-router-dom'
-import About from './pages/About/index'
-import Home from './pages/Home/index'
-import MyNavLink from './components/MyNavLink/index'
-import Header from './components/Head/index'
 import './App.css';
-
+import {Button} from "antd";
+import {DatePicker} from 'antd';
 class App extends Component {
+
+    state = {
+        date1: 'new Date()'
+    }
+    onChange = (date, dateString) => {
+        this.setState({date1: dateString})
+    }
+
     render() {
+        console.log(this.state)
         return (
             <div className="App">
                 <div className="container">
-                    <Header a={3}/>
-                    <div className={'flex'}>
-                        <MyNavLink to='/home'>Home</MyNavLink>
-                        <MyNavLink to='/about' a={1}>About</MyNavLink>
-                    </div>
-                    <div className={'border'}>
-                        <Switch>
-                            {/*注册路由*/}
-                            <Route path='/about' component={About}/>
-                            <Route path='/home' component={Home}/>
-                            <Redirect to={'/home'}/>
-                        </Switch>
-                    </div>
+                    <Button type="primary">Primary Button</Button>
+                    <DatePicker onChange={this.onChange}/>
+                    <div style={{marginTop: 16}}>{this.state.date1}</div>
                 </div>
             </div>
         );
