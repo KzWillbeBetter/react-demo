@@ -1,15 +1,21 @@
+.container {
+    display: flex;
+}
 
-ul li{
- list-style: none;
+ul li {
+    list-style: none;
 }
-.active{
- color: #bd362f;
- background-color: #b9c5d2;
+
+.active {
+    color: #bd362f;
+    background-color: #b9c5d2;
 }
-.border{
- height: 200px;
- border: 1px saddlebrown solid;
+
+.border {
+    height: 200px;
+    border: 1px saddlebrown solid;
 }
-.flex{
- display: flex;
+
+.flex {
+    display: flex;
 }
