@@ -1,32 +1,15 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Button} from "antd";
+import Count from "./components/Count";
 
 class App extends Component {
 
-    state = {
-        date1: 'new Date()',
-        data: {
-            a: 1,
-            b: {
-                b1: 2,
-                b2: 21,
-                b3: '',
-            }
-        }
-    }
-    start = () => {
-
-
-
-    }
 
     render() {
-        // console.log(this.state)
         return (
             <div className="App">
                 <div className="container">
-                    <Button onClick={this.start} type="primary">Primary Button</Button>
+                   <Count/>
                 </div>
             </div>
         );
